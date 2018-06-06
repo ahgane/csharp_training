@@ -6,26 +6,20 @@ using System.Threading.Tasks;
 
 namespace Addressbook_web_tests
 {
-    class Square : Figure
+    class Figure
     {
-        private int size;
+        private bool coloured = false;
 
-        public Square(int size)
-        {
-            this.size = size;
-        }
-
-        public int Size
+        public bool Coloured
         {
             set
             {
-                size = value;
+                coloured = value;
             }
             get
             {
-                return size;
+                return coloured;
             }
         }
-        
     }
 }
