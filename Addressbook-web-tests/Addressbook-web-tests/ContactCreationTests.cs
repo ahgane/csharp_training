@@ -46,9 +46,12 @@ namespace WebAddressBookTests
         public void ContactCreationTest()
         {
             OpenHomePage();
-            Login("admin", "secret");
+            Login(new AccountData("admin", "secret"));
             InitAddNewContact();
-            FillContactForm("Jane", "Test");
+            ContactData contact = new ContactData("Jane3", "Test3");
+            contact.Company = "IBM";
+            contact.Email = "qwerty@gmail.com";
+            FillContactForm(contact);
             SubmitContactCreation();
             Logout();
         }
@@ -65,13 +68,17 @@ namespace WebAddressBookTests
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        private void FillContactForm(string name, string surname)
+        private void FillContactForm(ContactData contact)
         {
             // Fill contact form
             driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(name);
+            driver.FindElement(By.Name("firstname")).SendKeys(contact.Name);
             driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(surname);
+            driver.FindElement(By.Name("lastname")).SendKeys(contact.Surname);
+            driver.FindElement(By.Name("company")).Clear();
+            driver.FindElement(By.Name("company")).SendKeys(contact.Company);
+            driver.FindElement(By.Name("email")).Clear();
+            driver.FindElement(By.Name("email")).SendKeys(contact.Email);
         }
 
         private void InitAddNewContact()
@@ -80,13 +87,13 @@ namespace WebAddressBookTests
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             // Login
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
         }
 

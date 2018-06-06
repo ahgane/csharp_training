@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Addressbook_web_tests
+namespace WebAddressBookTests
 {
     [TestClass]
     public class UnitTest1
@@ -37,6 +37,7 @@ namespace Addressbook_web_tests
             s3.Radius = 15;
 
             Assert.AreEqual(s1.Radius, 15);
+
             s2.Coloured = true;
         }
     }
