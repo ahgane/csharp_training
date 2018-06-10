@@ -12,8 +12,9 @@ namespace WebAddressBookTests
         [Test]
         public void GroupCreationTest()
         {
-            GoToHomePage();
+            GoToLoginPage();
             Login(new AccountData ("admin", "secret"));
+            GoToGroupsPage();
             CreateNewGroup();
             GroupData group = new GroupData ("JaneTest5");
             group.Header = "Family5";

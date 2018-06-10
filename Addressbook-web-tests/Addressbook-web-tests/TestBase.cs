@@ -18,7 +18,7 @@ namespace WebAddressBookTests
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected string baseURL;
-        //private bool acceptNextAlert = true;
+        private bool acceptNextAlert = true;
 
         [SetUp]
         public void SetupTest()
@@ -45,7 +45,7 @@ namespace WebAddressBookTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
-        protected void GoToHomePage()
+        protected void GoToLoginPage()
         {
             driver.Navigate().GoToUrl(baseURL + "/addressbook/");
         }
@@ -64,6 +64,11 @@ namespace WebAddressBookTests
             driver.FindElement(By.LinkText("Logout")).Click();
         }
 
+        protected void GoToHomePage()
+        {
+            driver.FindElement(By.LinkText("home")).Click(); ;
+        }
+
         protected void GoToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();
@@ -71,7 +76,6 @@ namespace WebAddressBookTests
 
         protected void CreateNewGroup()
         {
-            driver.FindElement(By.LinkText("groups")).Click();
             driver.FindElement(By.Name("new")).Click();
         }
 
@@ -90,12 +94,12 @@ namespace WebAddressBookTests
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        protected void ReturnToGroupsPage()
+        protected void ReturnToGroupPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
         }
 
-        protected void SelectGroup(int index)
+        protected void SelectRecord(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
         }
@@ -103,6 +107,34 @@ namespace WebAddressBookTests
         protected void RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+        }
+
+        private string CloseAlertAndGetItsText()
+        {
+            try
+            {
+                IAlert alert = driver.SwitchTo().Alert();
+                string alertText = alert.Text;
+                if (acceptNextAlert)
+                {
+                    alert.Accept();
+                }
+                else
+                {
+                    alert.Dismiss();
+                }
+                return alertText;
+            }
+            finally
+            {
+                acceptNextAlert = true;
+            }
+        }
+
+        protected void RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
         }
 
         protected void InitAddNewContact()

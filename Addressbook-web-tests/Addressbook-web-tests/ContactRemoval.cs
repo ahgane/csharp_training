@@ -7,21 +7,19 @@ using NUnit.Framework;
 namespace WebAddressBookTests
 {
     [TestFixture]
-    public class ContactCreationTests : TestBase
+    public class ContactRemovalTests : TestBase
     {
         [Test]
-        public void ContactCreationTest()
+        public void ContactRemovalTest()
         {
             GoToLoginPage();
             Login(new AccountData("admin", "secret"));
-            InitAddNewContact();
-            ContactData contact = new ContactData("Jane4", "Test4");
-            contact.Company = "IBM";
-            contact.Email = "testsubmit@gmail.com";
-            FillContactForm(contact);
-            Submit();
+            GoToHomePage();
+            SelectRecord(1);
+            RemoveContact();
             GoToHomePage();
             Logout();
         }
+        
     }
 }
