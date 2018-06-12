@@ -9,7 +9,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System.Text.RegularExpressions;
 using System.Threading;
-
+using WebAddressbookTests;
 
 namespace WebAddressBookTests
 {
@@ -18,7 +18,12 @@ namespace WebAddressBookTests
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected string baseURL;
-        private bool acceptNextAlert = true;
+        
+        protected LogonHelper logonHelper;
+        protected NavigationHelper navigationHelper;
+        protected ActionHelper actionHelper;
+        protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         [SetUp]
         public void SetupTest()
@@ -29,6 +34,12 @@ namespace WebAddressBookTests
             driver = new FirefoxDriver(options);
             baseURL = "http://localhost";
             verificationErrors = new StringBuilder();
+
+            logonHelper = new LogonHelper(driver);
+            navigationHelper = new NavigationHelper(driver, baseURL);
+            actionHelper = new ActionHelper(driver);
+            groupHelper = new GroupHelper(driver);
+            contactHelper = new ContactHelper(driver);
         }
 
         [TearDown]
@@ -43,117 +54,6 @@ namespace WebAddressBookTests
                 // Ignore errors if unable to close the browser
             }
             Assert.AreEqual("", verificationErrors.ToString());
-        }
-
-        protected void GoToLoginPage()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
-        }
-
-        protected void Login(AccountData account)
-        {
-            driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
-            driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
-        }
-
-        protected void Logout()
-        {
-            driver.FindElement(By.LinkText("Logout")).Click();
-        }
-
-        protected void GoToHomePage()
-        {
-            driver.FindElement(By.LinkText("home")).Click(); ;
-        }
-
-        protected void GoToGroupsPage()
-        {
-            driver.FindElement(By.LinkText("groups")).Click();
-        }
-
-        protected void CreateNewGroup()
-        {
-            driver.FindElement(By.Name("new")).Click();
-        }
-
-        protected void FillInGroupData(GroupData group)
-        {
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
-        }
-
-        protected void Submit()
-        {
-            driver.FindElement(By.Name("submit")).Click();
-        }
-
-        protected void ReturnToGroupPage()
-        {
-            driver.FindElement(By.LinkText("group page")).Click();
-        }
-
-        protected void SelectRecord(int index)
-        {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-        }
-
-        protected void RemoveGroup()
-        {
-            driver.FindElement(By.Name("delete")).Click();
-        }
-
-        private string CloseAlertAndGetItsText()
-        {
-            try
-            {
-                IAlert alert = driver.SwitchTo().Alert();
-                string alertText = alert.Text;
-                if (acceptNextAlert)
-                {
-                    alert.Accept();
-                }
-                else
-                {
-                    alert.Dismiss();
-                }
-                return alertText;
-            }
-            finally
-            {
-                acceptNextAlert = true;
-            }
-        }
-
-        protected void RemoveContact()
-        {
-            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
-        }
-
-        protected void InitAddNewContact()
-        {
-            // Go to and Init add new
-            driver.FindElement(By.LinkText("add new")).Click();
-        }
-
-        protected void FillContactForm(ContactData contact)
-        {
-            // Fill contact form
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.Name);
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.Surname);
-            driver.FindElement(By.Name("company")).Clear();
-            driver.FindElement(By.Name("company")).SendKeys(contact.Company);
-            driver.FindElement(By.Name("email")).Clear();
-            driver.FindElement(By.Name("email")).SendKeys(contact.Email);
         }
 
     }

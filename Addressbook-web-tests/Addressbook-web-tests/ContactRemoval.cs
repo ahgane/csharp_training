@@ -3,6 +3,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
+using WebAddressBookTests;
+
 
 namespace WebAddressBookTests
 {
@@ -12,13 +14,13 @@ namespace WebAddressBookTests
         [Test]
         public void ContactRemovalTest()
         {
-            GoToLoginPage();
-            Login(new AccountData("admin", "secret"));
-            GoToHomePage();
-            SelectRecord(1);
-            RemoveContact();
-            GoToHomePage();
-            Logout();
+            navigationHelper.GoToLoginPage();
+            logonHelper.Login(new AccountData("admin", "secret"));
+            navigationHelper.GoToHomePage();
+            actionHelper.SelectRecord(1);
+            contactHelper.RemoveContact();
+            navigationHelper.GoToHomePage();
+            logonHelper.Logout();
         }
         
     }

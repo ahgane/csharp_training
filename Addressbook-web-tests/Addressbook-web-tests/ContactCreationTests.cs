@@ -12,16 +12,16 @@ namespace WebAddressBookTests
         [Test]
         public void ContactCreationTest()
         {
-            GoToLoginPage();
-            Login(new AccountData("admin", "secret"));
-            InitAddNewContact();
+            navigationHelper.GoToLoginPage();
+            logonHelper.Login(new AccountData("admin", "secret"));
+            contactHelper.InitAddNewContact();
             ContactData contact = new ContactData("Jane4", "Test4");
             contact.Company = "IBM";
             contact.Email = "testsubmit@gmail.com";
-            FillContactForm(contact);
-            Submit();
-            GoToHomePage();
-            Logout();
+            contactHelper.FillContactForm(contact);
+            actionHelper.Submit();
+            navigationHelper.GoToHomePage();
+            logonHelper.Logout();
         }
     }
 }
