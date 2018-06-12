@@ -1,88 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="WebAddressBookTests.GroupCreationTests">
-    <Position X="1.75" Y="5.5" Width="1.5" />
+  <Class Name="WebAddressBookTests.GroupCreationTests" Collapsed="true">
+    <Position X="4.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GroupCreationTests.cs</FileName>
+      <FileName>tests\GroupCreationTests.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebAddressBookTests.GroupRemovalTests">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+  <Class Name="WebAddressBookTests.GroupRemovalTests" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GroupRemovalTest.cs</FileName>
+      <FileName>tests\GroupRemovalTest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebAddressBookTests.TestBase">
+  <Class Name="WebAddressBookTests.TestBase" Collapsed="true">
     <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAIAAAAAAABAAAAADBAAAAAAAAABCAAAEAACA=</HashCode>
-      <FileName>TestBase.cs</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>tests\TestBase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="logonHelper" />
-      <Field Name="navigationHelper" />
-      <Field Name="actionHelper" />
-      <Field Name="groupHelper" />
-      <Field Name="contactHelper" />
+      <Field Name="app" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WebAddressBookTests.ContactCreationTests">
-    <Position X="4" Y="5.75" Width="1.5" />
+    <Position X="0.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>ContactCreationTests.cs</FileName>
+      <FileName>tests\ContactCreationTests.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressBookTests.ContactRemovalTests" Collapsed="true">
-    <Position X="1" Y="4.5" Width="1.5" />
+    <Position X="0.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>ContactRemoval.cs</FileName>
+      <FileName>tests\ContactRemoval.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebAddressbookTests.ContactHelper">
+  <Class Name="WebAddressbookTests.ContactHelper" Collapsed="true">
     <Position X="8.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACCAAEAABAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ContactHelper.cs</FileName>
+      <FileName>AppManager\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressbookTests.GroupHelper" Collapsed="true">
     <Position X="8.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAg=</HashCode>
-      <FileName>GroupHelper.cs</FileName>
+      <FileName>AppManager\GroupHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressbookTests.NavigationHelper" Collapsed="true">
     <Position X="8.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAACAAAKA=</HashCode>
-      <FileName>NavigationHelper.cs</FileName>
+      <FileName>AppManager\NavigationHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebAddressbookTests.ActionHelper">
+  <Class Name="WebAddressbookTests.ActionHelper" Collapsed="true">
     <Position X="8.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAA=</HashCode>
-      <FileName>ActionHelper.cs</FileName>
+      <FileName>AppManager\ActionHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressbookTests.LogonHelper" Collapsed="true">
     <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>LogonHelper.cs</FileName>
+      <FileName>AppManager\LogonHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebAddressbookTests.HelperBase" Collapsed="true">
-    <Position X="11.5" Y="3" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>HelperBase.cs</FileName>
+      <FileName>AppManager\HelperBase.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="WebAddressbookTests.ApplicationManager" Collapsed="true">
+    <Position X="5.5" Y="1.25" Width="1.5" />
+    <Members>
+      <Property Name="Action" Hidden="true" />
+      <Property Name="Auth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAAAAEQABAAAAAAABAAAAACBAAAAAAAAIBCAABEAACQ=</HashCode>
+      <FileName>AppManager\ApplicationManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="actionHelper" />
+      <Field Name="contactHelper" />
+      <Field Name="groupHelper" />
+      <Field Name="navigationHelper" />
+      <Field Name="logonHelper" />
+      <Property Name="Action" />
+      <Property Name="Auth" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
