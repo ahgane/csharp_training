@@ -8,7 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using WebAddressBookTests;
 
-namespace WebAddressbookTests
+namespace WebAddressBookTests
 {
     public class GroupHelper : HelperBase
     {
@@ -25,6 +25,19 @@ namespace WebAddressbookTests
             manager.Action.Submit();
             manager.Navigator.GoToGroupsPage();
             manager.Auth.Logout();
+            return this;
+        }
+
+        public GroupHelper Modify(int v, GroupData newData)
+        {
+            manager.Navigator.GoToGroupsPage();
+            manager.Action.SelectRecord(v);
+            InitGroupModification();
+            FillInGroupData(newData);
+            SubmitGroupModification();
+            manager.Navigator.GoToGroupsPage();
+            manager.Auth.Logout();
+
             return this;
         }
 
@@ -60,6 +73,18 @@ namespace WebAddressbookTests
         public GroupHelper RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+            return this;
+        }
+
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
             return this;
         }
 

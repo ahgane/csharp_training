@@ -61,15 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tests\ContactModificationTests.cs" />
+    <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="AppManager\ActionHelper.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
     <Compile Include="ZFigures\Circle.cs" />
     <Compile Include="model\ContactData.cs" />
     <Compile Include="AppManager\ContactHelper.cs" />
-    <Compile Include="tests\ContactRemoval.cs" />
+    <Compile Include="tests\ContactRemovalTests.cs" />
     <Compile Include="AppManager\GroupHelper.cs" />
-    <Compile Include="tests\GroupRemovalTest.cs" />
+    <Compile Include="tests\GroupRemovalTests.cs" />
     <Compile Include="ZFigures\Figure.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="AppManager\HelperBase.cs" />

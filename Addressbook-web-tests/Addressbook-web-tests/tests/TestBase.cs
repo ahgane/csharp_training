@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
 using System.Threading;
-using WebAddressbookTests;
+using WebAddressBookTests;
 
 namespace WebAddressBookTests
 {

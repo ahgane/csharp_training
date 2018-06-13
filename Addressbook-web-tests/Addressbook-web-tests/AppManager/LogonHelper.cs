@@ -8,7 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using WebAddressBookTests;
 
-namespace WebAddressbookTests
+namespace WebAddressBookTests
 {
     public class LogonHelper : HelperBase
     {

@@ -8,10 +8,9 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using WebAddressbookTests;
 using WebAddressBookTests;
 
-namespace WebAddressbookTests
+namespace WebAddressBookTests
 {
     public class ContactHelper : HelperBase
     {
@@ -28,6 +27,37 @@ namespace WebAddressbookTests
             manager.Action.Submit();
             manager.Navigator.GoToHomePage();
             manager.Auth.Logout();
+            return this;
+        }
+
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            manager.Navigator.GoToHomePage();
+            InitContactModification(v);
+            FillContactForm(newData);
+            SubmitContactModification();
+            manager.Navigator.GoToHomePage();
+            manager.Auth.Logout();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper InitContactModification(int index)
+        {
+            if (index == 1)
+            {
+                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
+            }
+            else
+            { 
+                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+            }
+
             return this;
         }
 
