@@ -17,20 +17,34 @@ namespace WebAddressbookTests
     {
         private bool acceptNextAlert = true;
 
-        public ContactHelper(IWebDriver driver) : base (driver)
+        public ContactHelper(ApplicationManager manager) : base (manager)
         {
         }
 
-        public void RemoveContact()
+        public ContactHelper Create (ContactData contact)
+        {
+            InitAddNewContact();
+            FillContactForm(contact);
+            manager.Action.Submit();
+            manager.Navigator.GoToHomePage();
+            manager.Auth.Logout();
+            return this;
+        }
+
+        public ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            return this;
+
         }
 
-        public void InitAddNewContact()
+        public ContactHelper InitAddNewContact()
         {
             // Go to and Init add new
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
+
         }
 
         public string CloseAlertAndGetItsText()
@@ -55,7 +69,7 @@ namespace WebAddressbookTests
             }
         }
 
-        public void FillContactForm(ContactData contact)
+        public ContactHelper FillContactForm(ContactData contact)
         {
             // Fill contact form
             driver.FindElement(By.Name("firstname")).Clear();
@@ -66,6 +80,18 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("company")).SendKeys(contact.Company);
             driver.FindElement(By.Name("email")).Clear();
             driver.FindElement(By.Name("email")).SendKeys(contact.Email);
+            return this;
+        }
+
+        public ContactHelper RemoveContact(int v)
+        {
+            manager.Navigator.GoToHomePage();
+            manager.Action.SelectRecord(v);
+            RemoveContact();
+            manager.Navigator.GoToHomePage();
+            manager.Auth.Logout();
+            return this;
+
         }
     }
 }

@@ -12,16 +12,23 @@ namespace WebAddressBookTests
         [Test]
         public void ContactCreationTest()
         {
-            app.Navigator.GoToLoginPage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Contacts.InitAddNewContact();
             ContactData contact = new ContactData("Jane4", "Test4");
             contact.Company = "IBM";
-            contact.Email = "testsubmit@gmail.com";
-            app.Contacts.FillContactForm(contact);
-            app.Action.Submit();
-            app.Navigator.GoToHomePage();
-            app.Auth.Logout();
+            contact.Email = "newcontact@gmail.com";
+
+            app.Contacts.Create(contact);
+                
+        }
+
+        [Test]
+        public void NextContactCreationTest()
+        {
+            ContactData contact = new ContactData("JaneNext", "TestNext");
+            contact.Company = "Google";
+            contact.Email = "nextcontact@gmail.com";
+
+            app.Contacts.Create(contact);
+
         }
     }
 }

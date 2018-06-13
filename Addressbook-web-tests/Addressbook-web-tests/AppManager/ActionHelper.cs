@@ -11,7 +11,7 @@ namespace WebAddressbookTests
 {
     public class ActionHelper : HelperBase
     {
-        public ActionHelper(IWebDriver driver) : base (driver)
+        public ActionHelper(ApplicationManager manager) : base (manager)
         {
         }
 

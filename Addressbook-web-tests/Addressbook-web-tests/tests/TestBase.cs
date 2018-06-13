@@ -18,6 +18,9 @@ namespace WebAddressBookTests
         public void SetupTest()
         {
             app = new ApplicationManager();
+            app.Navigator.GoToLoginPage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+
         }
 
         [TearDown]

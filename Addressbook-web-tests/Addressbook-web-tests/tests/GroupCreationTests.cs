@@ -10,19 +10,36 @@ namespace WebAddressBookTests
     public class GroupCreationTests : TestBase
     {
         [Test]
-        public void GroupCreationTest()
+        public void NextGroupCreationTest()
+
         {
-            app.Navigator.GoToLoginPage();
-            app.Auth.Login(new AccountData ("admin", "secret"));
-            app.Navigator.GoToGroupsPage();
-            app.Groups.CreateNewGroup();
-            GroupData group = new GroupData ("JaneTest5");
+            GroupData group = new GroupData("Next");
+            group.Header = "Next";
+            group.Footer = "Next";
+
+            app.Groups.Create(group);
+
+        }
+
+        [Test]
+        public void GroupCreationTest()
+
+        {
+            GroupData group = new GroupData("JaneTest5");
             group.Header = "Family5";
             group.Footer = "Extended5";
-            app.Groups.FillInGroupData(group);
-            app.Action.Submit();
-            app.Navigator.GoToGroupsPage();
-            app.Auth.Logout();
+
+            app.Groups.Create(group);
+           
+        }
+
+        public void EmptyGroupCreationTest()
+        {
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+
+            app.Groups.Create(group);
         }
     }
 }

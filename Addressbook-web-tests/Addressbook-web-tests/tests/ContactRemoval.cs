@@ -14,13 +14,8 @@ namespace WebAddressBookTests
         [Test]
         public void ContactRemovalTest()
         {
-            app.Navigator.GoToLoginPage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Navigator.GoToHomePage();
-            app.Action.SelectRecord(1);
-            app.Contacts.RemoveContact();
-            app.Navigator.GoToHomePage();
-            app.Auth.Logout();
+            app.Contacts.RemoveContact(2);
+
         }
         
     }
