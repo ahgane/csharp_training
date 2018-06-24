@@ -7,27 +7,18 @@ using NUnit.Framework;
 using System.Text.RegularExpressions;
 using System.Threading;
 using WebAddressBookTests;
+using WebAddressbookTests;
 
 namespace WebAddressBookTests
 {
     public class TestBase
     {
-         protected ApplicationManager app;
+        protected ApplicationManager app;
         
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
-            app.Navigator.GoToLoginPage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-
+            app = TestSuiteFixture.app;
         }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            app.Stop();
-        }
-
     }
 }

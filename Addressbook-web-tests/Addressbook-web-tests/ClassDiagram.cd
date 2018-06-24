@@ -17,7 +17,7 @@
   <Class Name="WebAddressBookTests.TestBase" Collapsed="true">
     <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>tests\TestBase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -41,7 +41,7 @@
   <Class Name="WebAddressBookTests.ContactHelper" Collapsed="true">
     <Position X="8.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACCAAEAABAABAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAACCAAEAABAABAAAAAAAAAAAEAAAAAYAAAAAAA=</HashCode>
       <FileName>AppManager\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -76,7 +76,7 @@
   <Class Name="WebAddressBookTests.HelperBase" Collapsed="true">
     <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>AppManager\HelperBase.cs</FileName>
     </TypeIdentifier>
   </Class>

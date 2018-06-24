@@ -33,6 +33,7 @@ namespace WebAddressBookTests
            
         }
 
+        [Test]
         public void EmptyGroupCreationTest()
         {
             GroupData group = new GroupData("");
