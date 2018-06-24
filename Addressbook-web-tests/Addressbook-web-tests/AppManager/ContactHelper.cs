@@ -94,14 +94,11 @@ namespace WebAddressBookTests
         public ContactHelper FillContactForm(ContactData contact)
         {
             // Fill contact form
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.Name);
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.Surname);
-            driver.FindElement(By.Name("company")).Clear();
-            driver.FindElement(By.Name("company")).SendKeys(contact.Company);
-            driver.FindElement(By.Name("email")).Clear();
-            driver.FindElement(By.Name("email")).SendKeys(contact.Email);
+            Type(By.Name("firstname"), contact.Name);
+            Type(By.Name("lastname"), contact.Surname);
+            Type(By.Name("company"), contact.Company);
+            Type(By.Name("email"), contact.Email);
+            
             return this;
         }
 
