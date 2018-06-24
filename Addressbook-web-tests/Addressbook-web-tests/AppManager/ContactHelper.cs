@@ -49,8 +49,16 @@ namespace WebAddressBookTests
 
         public ContactHelper InitContactModification(int index)
         {
-           driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index+1 + "]")).Click();
-           return this;
+            if (index == 1)
+            {
+                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
+            }
+            else
+            { 
+                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+            }
+
+            return this;
         }
 
         public ContactHelper RemoveContact()
