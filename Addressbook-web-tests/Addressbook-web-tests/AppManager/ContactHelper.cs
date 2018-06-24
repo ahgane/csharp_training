@@ -49,15 +49,7 @@ namespace WebAddressBookTests
 
         public ContactHelper InitContactModification(int index)
         {
-            if (index == 1)
-            {
-                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
-            }
-            else
-            { 
-                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
-            }
-
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
             return this;
         }
 
