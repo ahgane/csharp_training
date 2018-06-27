@@ -24,7 +24,7 @@ namespace WebAddressBookTests
             FillInGroupData(group);
             manager.Action.Submit();
             manager.Navigator.GoToGroupsPage();
-            manager.Auth.Logout();
+          //  manager.Auth.Logout();
             return this;
         }
 
@@ -36,7 +36,7 @@ namespace WebAddressBookTests
             FillInGroupData(newData);
             SubmitGroupModification();
             manager.Navigator.GoToGroupsPage();
-            manager.Auth.Logout();
+          //  manager.Auth.Logout();
 
             return this;
         }
@@ -48,7 +48,7 @@ namespace WebAddressBookTests
             manager.Action.SelectRecord(v);
             RemoveGroup();
             manager.Navigator.ReturnToGroupPage();
-            manager.Auth.Logout();
+           // manager.Auth.Logout();
             return this;
         }
 
