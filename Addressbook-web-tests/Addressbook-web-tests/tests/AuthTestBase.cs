@@ -4,21 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using WebAddressBookTests;
 
 namespace WebAddressBookTests
+
 {
-    [SetUpFixture]
-    public class TestSuiteFixture
+    public class AuthTestBase : TestBase
     {
         [SetUp]
-        public void InitApplicationManager()
+        public void SetupLogin()
         {
-            ApplicationManager app = ApplicationManager.GetInstance();
-
-            app.Navigator.GoToLoginPage();
             app.Auth.Login(new AccountData("admin", "secret"));
-
         }
     }
+    
 }

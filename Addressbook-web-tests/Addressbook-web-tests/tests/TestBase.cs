@@ -7,7 +7,6 @@ using NUnit.Framework;
 using System.Text.RegularExpressions;
 using System.Threading;
 using WebAddressBookTests;
-using WebAddressbookTests;
 
 namespace WebAddressBookTests
 {
@@ -16,7 +15,7 @@ namespace WebAddressBookTests
         protected ApplicationManager app;
         
         [SetUp]
-        public void SetupTest()
+        public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance();
         }

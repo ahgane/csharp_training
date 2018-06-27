@@ -61,12 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tests\AuthTestBase.cs" />
     <Compile Include="tests\ContactModificationTests.cs" />
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="AppManager\ActionHelper.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
-    <Compile Include="tests\TestSuiteFixture2.cs" />
+    <Compile Include="tests\LoginTests.cs" />
     <Compile Include="Z_If then Sales\Sales.cs" />
     <Compile Include="ZFigures\Circle.cs" />
     <Compile Include="model\ContactData.cs" />

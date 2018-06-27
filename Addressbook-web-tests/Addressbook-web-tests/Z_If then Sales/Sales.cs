@@ -1,13 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-namespace WebAddressbookTests
+namespace WebAddressBookTests
 {
-    [TestClass]
+    [TestFixture]
     public class Sales
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void Sale()
         {
             double total = 900;
             bool VipClient = false;
