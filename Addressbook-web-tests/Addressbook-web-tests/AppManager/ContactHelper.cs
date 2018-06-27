@@ -111,7 +111,7 @@ namespace WebAddressBookTests
             manager.Action.SelectRecord(v);
             RemoveContact();
             manager.Navigator.GoToHomePage();
-            manager.Auth.Logout();
+            //manager.Auth.Logout();
             return this;
 
         }

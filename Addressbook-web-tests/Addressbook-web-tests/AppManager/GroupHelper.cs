@@ -23,7 +23,7 @@ namespace WebAddressBookTests
             InitCreateNewGroup();
             FillInGroupData(group);
             manager.Action.Submit();
-            manager.Navigator.GoToGroupsPage();
+          // manager.Navigator.GoToGroupsPage();
           //  manager.Auth.Logout();
             return this;
         }
@@ -35,7 +35,7 @@ namespace WebAddressBookTests
             InitGroupModification();
             FillInGroupData(newData);
             SubmitGroupModification();
-            manager.Navigator.GoToGroupsPage();
+          //  manager.Navigator.GoToGroupsPage();
           //  manager.Auth.Logout();
 
             return this;
@@ -47,7 +47,7 @@ namespace WebAddressBookTests
             manager.Navigator.GoToGroupsPage();
             manager.Action.SelectRecord(v);
             RemoveGroup();
-            manager.Navigator.ReturnToGroupPage();
+           // manager.Navigator.ReturnToGroupPage();
            // manager.Auth.Logout();
             return this;
         }
