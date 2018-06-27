@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WebAddressbookTests.tests
+namespace WebAddressbookTests
 {
     [TestClass]
     public class Sales

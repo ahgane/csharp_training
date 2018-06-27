@@ -7,12 +7,13 @@ using NUnit.Framework;
 using System.Text.RegularExpressions;
 using System.Threading;
 using WebAddressBookTests;
+using WebAddressbookTests;
 
 namespace WebAddressBookTests
 {
     public class TestBase
     {
-         protected ApplicationManager app;
+        protected ApplicationManager app;
         
         [SetUp]
         public void SetupTest()
