@@ -43,11 +43,10 @@ namespace WebAddressBookTests
 
         public GroupHelper RemoveGroup(int v)
         {
-
             manager.Navigator.GoToGroupsPage();
             manager.Action.SelectRecord(v);
             RemoveGroup();
-           // manager.Navigator.ReturnToGroupPage();
+            manager.Navigator.ReturnToGroupPage();
            // manager.Auth.Logout();
             return this;
         }

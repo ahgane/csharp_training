@@ -14,7 +14,7 @@ namespace WebAddressBookTests
         public void LoginWithValidCredentials()
         {
             //prepare
-            app.Auth.Logout();
+          //  app.Auth.Logout();
             
             //action
             AccountData account = new AccountData("admin","secret");
@@ -28,10 +28,10 @@ namespace WebAddressBookTests
         public void LoginWithInvalidCredentials()
         {
             //prepare
-            app.Auth.Logout();
+         //   app.Auth.Logout();
 
             //action
-            AccountData account = new AccountData("admin","secret");
+            AccountData account = new AccountData("admin","erhtd");
             app.Auth.Login(account);
 
             //verification

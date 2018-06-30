@@ -26,11 +26,20 @@ namespace WebAddressBookTests
 
         public void GoToHomePage()
         {
-            driver.FindElement(By.LinkText("home")).Click(); ;
+            if (driver.Url == baseURL + "/addresbook/")
+            {
+                return;
+            }
+                driver.FindElement(By.LinkText("home")).Click(); ;
         }
 
         public void GoToGroupsPage()
         {
+            if (driver.Url == baseURL + "/addresbook/group.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
