@@ -68,7 +68,7 @@
     <Compile Include="AppManager\ActionHelper.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
     <Compile Include="tests\LoginTests.cs" />
-    <Compile Include="tests\UnitTest1.cs" />
+    <Compile Include="Z_LearningCycles\LearningCycles.cs" />
     <Compile Include="Z_If then Sales\Sales.cs" />
     <Compile Include="ZFigures\Circle.cs" />
     <Compile Include="model\ContactData.cs" />

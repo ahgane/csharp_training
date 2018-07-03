@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Collections.Generic;
+using OpenQA.Selenium;
 
 namespace WebAddressBookTests
 {
@@ -15,9 +17,25 @@ namespace WebAddressBookTests
             InitCreateNewGroup();
             FillInGroupData(group);
             manager.Action.Submit();
-          // manager.Navigator.GoToGroupsPage();
+            manager.Navigator.GoToGroupsPage();
           //  manager.Auth.Logout();
             return this;
+        }
+
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+
+            manager.Navigator.GoToGroupsPage();
+
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+
+            foreach (IWebElement element in elements)
+            {
+                groups.Add (new GroupData(element.Text));
+            }
+
+            return groups;
         }
 
         public GroupHelper Modify(int v, GroupData newData)

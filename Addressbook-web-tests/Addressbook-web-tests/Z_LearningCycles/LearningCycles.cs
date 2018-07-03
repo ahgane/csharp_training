@@ -12,7 +12,7 @@ namespace WebAddressBookTests
     public class Cycles
     {
                [TestMethod]
-               public void TestMethod1()
+               public void LearningCycles_1()
                {
                    string[] s = new string[] { "I", "want", "to", "sleep", "now" };
                    for (int i = 0; i < s.Length; i++)
@@ -21,7 +21,7 @@ namespace WebAddressBookTests
                    }
                }
                [TestMethod]
-               public void TestMethod2()
+               public void LearningCycles_2()
                {
                    string[] s = new string[] { "I", "want", "to", "sleep", "now", "darling" };
                    foreach (string element in s)
