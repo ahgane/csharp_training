@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using WebAddressBookTests;
+
 
 namespace WebAddressBookTests
 {
@@ -14,12 +16,11 @@ namespace WebAddressBookTests
         [Test]
         public void GroupModificationTest()
         {
-            GroupData newData = new GroupData("Modified");
-            newData.Header = null;
-            newData.Footer = null;
+            GroupData newData = new GroupData("NoGroupTest");
+            newData.Header = "NGT";
+            newData.Footer = "NGT";
 
             app.Groups.Modify(1, newData);
-
         }
     }
 }

@@ -16,29 +16,38 @@ namespace WebAddressBookTests
     {
         private bool acceptNextAlert = true;
 
-        public ContactHelper(ApplicationManager manager) : base (manager)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
 
-        public ContactHelper Create (ContactData contact)
+        public ContactHelper Create(ContactData contact)
         {
             InitAddNewContact();
             FillContactForm(contact);
             manager.Action.Submit();
             manager.Navigator.GoToHomePage();
-          //  manager.Auth.Logout();
+            //  manager.Auth.Logout();
             return this;
         }
 
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
-            InitContactModification(v);
-            FillContactForm(newData);
-            SubmitContactModification();
-            manager.Navigator.GoToHomePage();
-           // manager.Auth.Logout();
-            return this;
+
+            if (!IsContactPresent(By.XPath("//input[@name='selected[]']")))
+            {
+                Create(newData);
+                return this;
+            }
+            else
+            {
+                InitContactModification(v);
+                FillContactForm(newData);
+                SubmitContactModification();
+                manager.Navigator.GoToHomePage();
+                // manager.Auth.Logout();
+                return this;
+            }
         }
 
         public ContactHelper SubmitContactModification()
@@ -105,12 +114,36 @@ namespace WebAddressBookTests
         public ContactHelper RemoveContact(int v)
         {
             manager.Navigator.GoToHomePage();
+
+            if (!IsContactPresent(By.XPath("//input[@name='selected[]']")))
+            {
+
+                ContactData contact = new ContactData("JaneNext", "TestNext");
+                contact.Company = "Google";
+                contact.Email = "nextcontact@gmail.com";
+
+                Create(contact);
+            }
+
             manager.Action.SelectRecord(v);
             RemoveContact();
             manager.Navigator.GoToHomePage();
             //manager.Auth.Logout();
             return this;
 
+        }
+
+        public bool IsContactPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }
