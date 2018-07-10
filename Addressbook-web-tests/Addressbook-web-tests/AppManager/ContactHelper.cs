@@ -30,24 +30,32 @@ namespace WebAddressBookTests
             return this;
         }
 
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+
+            manager.Navigator.GoToGroupsPage();
+
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("entry"));
+
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactData(element.Text, element.Text));
+            }
+
+            return contacts;
+        }
+
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
 
-            if (!IsContactPresent(By.XPath("//input[@name='selected[]']")))
-            {
-                Create(newData);
-                return this;
-            }
-            else
-            {
-                InitContactModification(v);
+              InitContactModification(v);
                 FillContactForm(newData);
                 SubmitContactModification();
                 manager.Navigator.GoToHomePage();
                 // manager.Auth.Logout();
                 return this;
-            }
         }
 
         public ContactHelper SubmitContactModification()
@@ -115,16 +123,6 @@ namespace WebAddressBookTests
         {
             manager.Navigator.GoToHomePage();
 
-            if (!IsContactPresent(By.XPath("//input[@name='selected[]']")))
-            {
-
-                ContactData contact = new ContactData("JaneNext", "TestNext");
-                contact.Company = "Google";
-                contact.Email = "nextcontact@gmail.com";
-
-                Create(contact);
-            }
-
             manager.Action.SelectRecord(v);
             RemoveContact();
             manager.Navigator.GoToHomePage();
@@ -133,17 +131,10 @@ namespace WebAddressBookTests
 
         }
 
-        public bool IsContactPresent(By by)
+        public bool IsPresent()
         {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            return IsElementPresent(By.XPath("//input[@name='selected[]']"));
         }
+
     }
 }

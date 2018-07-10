@@ -7,6 +7,7 @@ using NUnit.Framework;
 using System.Text.RegularExpressions;
 using System.Threading;
 using WebAddressBookTests;
+using OpenQA.Selenium;
 
 namespace WebAddressBookTests
 {
@@ -19,7 +20,5 @@ namespace WebAddressBookTests
         {
             app = ApplicationManager.GetInstance();
         }
-
-
     }
 }

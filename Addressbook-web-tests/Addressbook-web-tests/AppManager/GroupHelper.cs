@@ -41,42 +41,18 @@ namespace WebAddressBookTests
         public GroupHelper Modify(int v, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
+            manager.Action.SelectRecord(v);
+            InitGroupModification();
+            FillInGroupData(newData);
+            SubmitGroupModification();
+            //  manager.Navigator.GoToGroupsPage();
+            //  manager.Auth.Logout();
 
-            // if (!IsGroupPresent(By.XPath(//input[@name='selected[]'])
-
-            if (!IsGroupPresent(By.Name("checkbox")))
-            {
-                Create(newData);
-                return this;
-            }
-            else
-            {
-
-                manager.Action.SelectRecord(v);
-                InitGroupModification();
-                FillInGroupData(newData);
-                SubmitGroupModification();
-                //  manager.Navigator.GoToGroupsPage();
-                //  manager.Auth.Logout();
-
-                return this;
-            }
+            return this;
         }
-
         public GroupHelper RemoveGroup(int v)
         {
             manager.Navigator.GoToGroupsPage();
-
-
-            if(!IsGroupPresent(By.XPath("//input[@name='selected[]']")))
-            {
-                GroupData newData = new GroupData("GroupToDelete");
-                newData.Header = "HeaderToDelete";
-                newData.Footer = "FooterToDelete";
-
-                Create(newData);
-                manager.Navigator.ReturnToGroupPage();
-            }
             manager.Action.SelectRecord(v);
             RemoveGroup();
             manager.Navigator.ReturnToGroupPage();
@@ -118,17 +94,9 @@ namespace WebAddressBookTests
             return this;
         }
 
-        public bool IsGroupPresent(By by)
+        public bool IsPresent()
         {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            return IsElementPresent(By.Name("checkbox"));
         }
 
     }
